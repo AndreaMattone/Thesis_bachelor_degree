@@ -1,0 +1,949 @@
+{
+  "contractName": "AndromedaElections",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "votingAccountIndexer",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint32",
+          "name": "myDateIndexer",
+          "type": "uint32"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "votedAccount",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "myVote",
+          "type": "string"
+        }
+      ],
+      "name": "VoteEvent",
+      "type": "event"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "votedAccount",
+          "type": "address"
+        },
+        {
+          "internalType": "string",
+          "name": "myVote",
+          "type": "string"
+        },
+        {
+          "internalType": "uint32",
+          "name": "myDate",
+          "type": "uint32"
+        }
+      ],
+      "name": "voteCommitted",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"votingAccountIndexer\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint32\",\"name\":\"myDateIndexer\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"votedAccount\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"myVote\",\"type\":\"string\"}],\"name\":\"VoteEvent\",\"type\":\"event\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"votedAccount\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"myVote\",\"type\":\"string\"},{\"internalType\":\"uint32\",\"name\":\"myDate\",\"type\":\"uint32\"}],\"name\":\"voteCommitted\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{\"voteCommitted(address,string,uint32)\":{\"notice\":\"Per ogni account ho una struttura contenente due array \\\"collegati\\\" tra loro per lo stesso indice i, ho l'account votato e il voto effettuato da msg.sender\"}}}},\"settings\":{\"compilationTarget\":{\"/C/Users/andrea.mattone/Desktop/andromeda-app/andromeda-contracts/contracts/AndromedaElections.sol\":\"AndromedaElections\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/Users/andrea.mattone/Desktop/andromeda-app/andromeda-contracts/contracts/AndromedaElections.sol\":{\"keccak256\":\"0x7e529b5542858d26085bfb0fdd63d0f86e28aea8eaf3eb24d2922bceb9b266bb\",\"urls\":[\"bzz-raw://6c32f22f3bc6fa359682b45cf0c2830e2c5a13fbe47e47bb57c96829f1e873a1\",\"dweb:/ipfs/QmQiDT2P3aisGMZU28nVcpqqnA1qF5MSZFCm2qCSN434Ro\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b50610380806100206000396000f3fe608060405234801561001057600080fd5b506004361061002b5760003560e01c8063d14d99c114610030575b600080fd5b61004a60048036036100459190810190610126565b61004c565b005b8063ffffffff163373ffffffffffffffffffffffffffffffffffffffff167fed5d89e2274b13499d063995f919767d8649bf7830f2a29d5276ac5587d68cbd858560405161009b9291906101d5565b60405180910390a3505050565b6000813590506100b78161030f565b92915050565b600082601f8301126100ce57600080fd5b81356100e16100dc82610232565b610205565b915080825260208301602083018583830111156100fd57600080fd5b6101088382846102bc565b50505092915050565b60008135905061012081610326565b92915050565b60008060006060848603121561013b57600080fd5b6000610149868287016100a8565b935050602084013567ffffffffffffffff81111561016657600080fd5b610172868287016100bd565b925050604061018386828701610111565b9150509250925092565b6101968161027a565b82525050565b60006101a78261025e565b6101b18185610269565b93506101c18185602086016102cb565b6101ca816102fe565b840191505092915050565b60006040820190506101ea600083018561018d565b81810360208301526101fc818461019c565b90509392505050565b6000604051905081810181811067ffffffffffffffff8211171561022857600080fd5b8060405250919050565b600067ffffffffffffffff82111561024957600080fd5b601f19601f8301169050602081019050919050565b600081519050919050565b600082825260208201905092915050565b60006102858261028c565b9050919050565b600073ffffffffffffffffffffffffffffffffffffffff82169050919050565b600063ffffffff82169050919050565b82818337600083830152505050565b60005b838110156102e95780820151818401526020810190506102ce565b838111156102f8576000848401525b50505050565b6000601f19601f8301169050919050565b6103188161027a565b811461032357600080fd5b50565b61032f816102ac565b811461033a57600080fd5b5056fea365627a7a72315820e9bc54bdf7907d0586a51ccec6b85f85c8060281d60fe6caff9a3ebcafc3da5c6c6578706572696d656e74616cf564736f6c63430005100040",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061002b5760003560e01c8063d14d99c114610030575b600080fd5b61004a60048036036100459190810190610126565b61004c565b005b8063ffffffff163373ffffffffffffffffffffffffffffffffffffffff167fed5d89e2274b13499d063995f919767d8649bf7830f2a29d5276ac5587d68cbd858560405161009b9291906101d5565b60405180910390a3505050565b6000813590506100b78161030f565b92915050565b600082601f8301126100ce57600080fd5b81356100e16100dc82610232565b610205565b915080825260208301602083018583830111156100fd57600080fd5b6101088382846102bc565b50505092915050565b60008135905061012081610326565b92915050565b60008060006060848603121561013b57600080fd5b6000610149868287016100a8565b935050602084013567ffffffffffffffff81111561016657600080fd5b610172868287016100bd565b925050604061018386828701610111565b9150509250925092565b6101968161027a565b82525050565b60006101a78261025e565b6101b18185610269565b93506101c18185602086016102cb565b6101ca816102fe565b840191505092915050565b60006040820190506101ea600083018561018d565b81810360208301526101fc818461019c565b90509392505050565b6000604051905081810181811067ffffffffffffffff8211171561022857600080fd5b8060405250919050565b600067ffffffffffffffff82111561024957600080fd5b601f19601f8301169050602081019050919050565b600081519050919050565b600082825260208201905092915050565b60006102858261028c565b9050919050565b600073ffffffffffffffffffffffffffffffffffffffff82169050919050565b600063ffffffff82169050919050565b82818337600083830152505050565b60005b838110156102e95780820151818401526020810190506102ce565b838111156102f8576000848401525b50505050565b6000601f19601f8301169050919050565b6103188161027a565b811461032357600080fd5b50565b61032f816102ac565b811461033a57600080fd5b5056fea365627a7a72315820e9bc54bdf7907d0586a51ccec6b85f85c8060281d60fe6caff9a3ebcafc3da5c6c6578706572696d656e74616cf564736f6c63430005100040",
+  "sourceMap": "64:536:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;64:536:0;;;;;;;",
+  "deployedSourceMap": "64:536:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;64:536:0;;;;;;;;;;;;;;;;;;;426:163;;;;;;;;;;;;;;;;:::i;:::-;;;552:6;530:51;;540:10;530:51;;;560:12;574:6;530:51;;;;;;;;;;;;;;;;426:163;;;:::o;5:130:-1:-;;85:6;72:20;63:29;;97:33;124:5;97:33;;;57:78;;;;;143:442;;245:3;238:4;230:6;226:17;222:27;212:2;;263:1;260;253:12;212:2;300:6;287:20;322:65;337:49;379:6;337:49;;;322:65;;;313:74;;407:6;400:5;393:21;443:4;435:6;431:17;476:4;469:5;465:16;511:3;502:6;497:3;493:16;490:25;487:2;;;528:1;525;518:12;487:2;538:41;572:6;567:3;562;538:41;;;205:380;;;;;;;;593:128;;672:6;659:20;650:29;;684:32;710:5;684:32;;;644:77;;;;;728:595;;;;875:2;863:9;854:7;850:23;846:32;843:2;;;891:1;888;881:12;843:2;926:1;943:53;988:7;979:6;968:9;964:22;943:53;;;933:63;;905:97;1061:2;1050:9;1046:18;1033:32;1085:18;1077:6;1074:30;1071:2;;;1117:1;1114;1107:12;1071:2;1137:63;1192:7;1183:6;1172:9;1168:22;1137:63;;;1127:73;;1012:194;1237:2;1255:52;1299:7;1290:6;1279:9;1275:22;1255:52;;;1245:62;;1216:97;837:486;;;;;;1330:113;1413:24;1431:5;1413:24;;;1408:3;1401:37;1395:48;;;1450:347;;1562:39;1595:5;1562:39;;;1613:71;1677:6;1672:3;1613:71;;;1606:78;;1689:52;1734:6;1729:3;1722:4;1715:5;1711:16;1689:52;;;1762:29;1784:6;1762:29;;;1757:3;1753:39;1746:46;;1542:255;;;;;;1804:412;;1970:2;1959:9;1955:18;1947:26;;1984:71;2052:1;2041:9;2037:17;2028:6;1984:71;;;2103:9;2097:4;2093:20;2088:2;2077:9;2073:18;2066:48;2128:78;2201:4;2192:6;2128:78;;;2120:86;;1941:275;;;;;;2223:256;;2285:2;2279:9;2269:19;;2323:4;2315:6;2311:17;2422:6;2410:10;2407:22;2386:18;2374:10;2371:34;2368:62;2365:2;;;2443:1;2440;2433:12;2365:2;2463:10;2459:2;2452:22;2263:216;;;;;2486:322;;2630:18;2622:6;2619:30;2616:2;;;2662:1;2659;2652:12;2616:2;2729:4;2725:9;2718:4;2710:6;2706:17;2702:33;2694:41;;2793:4;2787;2783:15;2775:23;;2553:255;;;;2815:122;;2909:5;2903:12;2893:22;;2874:63;;;;2945:163;;3060:6;3055:3;3048:19;3097:4;3092:3;3088:14;3073:29;;3041:67;;;;;3116:91;;3178:24;3196:5;3178:24;;;3167:35;;3161:46;;;;3214:121;;3287:42;3280:5;3276:54;3265:65;;3259:76;;;;3342:88;;3414:10;3407:5;3403:22;3392:33;;3386:44;;;;3438:145;3519:6;3514:3;3509;3496:30;3575:1;3566:6;3561:3;3557:16;3550:27;3489:94;;;;3592:268;3657:1;3664:101;3678:6;3675:1;3672:13;3664:101;;;3754:1;3749:3;3745:11;3739:18;3735:1;3730:3;3726:11;3719:39;3700:2;3697:1;3693:10;3688:15;;3664:101;;;3780:6;3777:1;3774:13;3771:2;;;3845:1;3836:6;3831:3;3827:16;3820:27;3771:2;3641:219;;;;;3868:97;;3956:2;3952:7;3947:2;3940:5;3936:14;3932:28;3922:38;;3916:49;;;;3973:117;4042:24;4060:5;4042:24;;;4035:5;4032:35;4022:2;;4081:1;4078;4071:12;4022:2;4016:74;;4097:115;4165:23;4182:5;4165:23;;;4158:5;4155:34;4145:2;;4203:1;4200;4193:12;4145:2;4139:73;",
+  "source": "pragma solidity >=0.4.22;\r\npragma experimental ABIEncoderV2;\r\n\r\ncontract AndromedaElections{\r\n    \r\n    event VoteEvent(address indexed votingAccountIndexer, uint32 indexed myDateIndexer, address votedAccount, string myVote);\r\n    \r\n    /**\r\n     * Per ogni account ho una struttura contenente due array \"collegati\" tra loro\r\n     * per lo stesso indice i, ho l'account votato e il voto effettuato da msg.sender\r\n     */\r\n    function voteCommitted(address votedAccount, string memory myVote, uint32 myDate) public{\r\n        emit VoteEvent(msg.sender, myDate, votedAccount, myVote);\r\n    }\r\n\r\n    \r\n}",
+  "sourcePath": "C:/Users/andrea.mattone/Desktop/andromeda-app/andromeda-contracts/contracts/AndromedaElections.sol",
+  "ast": {
+    "absolutePath": "/C/Users/andrea.mattone/Desktop/andromeda-app/andromeda-contracts/contracts/AndromedaElections.sol",
+    "exportedSymbols": {
+      "AndromedaElections": [
+        31
+      ]
+    },
+    "id": 32,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.4",
+          ".22"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:25:0"
+      },
+      {
+        "id": 2,
+        "literals": [
+          "experimental",
+          "ABIEncoderV2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "27:33:0"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 31,
+        "linearizedBaseContracts": [
+          31
+        ],
+        "name": "AndromedaElections",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 12,
+            "name": "VoteEvent",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 11,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4,
+                  "indexed": true,
+                  "name": "votingAccountIndexer",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12,
+                  "src": "120:36:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "120:7:0",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6,
+                  "indexed": true,
+                  "name": "myDateIndexer",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12,
+                  "src": "158:28:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 5,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "158:6:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8,
+                  "indexed": false,
+                  "name": "votedAccount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12,
+                  "src": "188:20:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 7,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "188:7:0",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10,
+                  "indexed": false,
+                  "name": "myVote",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12,
+                  "src": "210:13:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 9,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "210:6:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "119:105:0"
+            },
+            "src": "104:121:0"
+          },
+          {
+            "body": {
+              "id": 29,
+              "nodeType": "Block",
+              "src": "514:75:0",
+              "statements": [
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 22,
+                          "name": "msg",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 46,
+                          "src": "540:3:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_message",
+                            "typeString": "msg"
+                          }
+                        },
+                        "id": 23,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "sender",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "540:10:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 24,
+                        "name": "myDate",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 18,
+                        "src": "552:6:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint32",
+                          "typeString": "uint32"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 25,
+                        "name": "votedAccount",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 14,
+                        "src": "560:12:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 26,
+                        "name": "myVote",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 16,
+                        "src": "574:6:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_string_memory_ptr",
+                          "typeString": "string memory"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        },
+                        {
+                          "typeIdentifier": "t_uint32",
+                          "typeString": "uint32"
+                        },
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        {
+                          "typeIdentifier": "t_string_memory_ptr",
+                          "typeString": "string memory"
+                        }
+                      ],
+                      "id": 21,
+                      "name": "VoteEvent",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 12,
+                      "src": "530:9:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_uint32_$_t_address_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (address,uint32,address,string memory)"
+                      }
+                    },
+                    "id": 27,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "530:51:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 28,
+                  "nodeType": "EmitStatement",
+                  "src": "525:56:0"
+                }
+              ]
+            },
+            "documentation": "Per ogni account ho una struttura contenente due array \"collegati\" tra loro\nper lo stesso indice i, ho l'account votato e il voto effettuato da msg.sender",
+            "id": 30,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "voteCommitted",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 19,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 14,
+                  "name": "votedAccount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 30,
+                  "src": "449:20:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 13,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "449:7:0",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 16,
+                  "name": "myVote",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 30,
+                  "src": "471:20:0",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 15,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "471:6:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 18,
+                  "name": "myDate",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 30,
+                  "src": "493:13:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 17,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "493:6:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "448:59:0"
+            },
+            "returnParameters": {
+              "id": 20,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "514:0:0"
+            },
+            "scope": 31,
+            "src": "426:163:0",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 32,
+        "src": "64:536:0"
+      }
+    ],
+    "src": "0:600:0"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/C/Users/andrea.mattone/Desktop/andromeda-app/andromeda-contracts/contracts/AndromedaElections.sol",
+      "exportedSymbols": {
+        "AndromedaElections": [
+          31
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            ">=",
+            "0.4",
+            ".22"
+          ]
+        },
+        "id": 1,
+        "name": "PragmaDirective",
+        "src": "0:25:0"
+      },
+      {
+        "attributes": {
+          "literals": [
+            "experimental",
+            "ABIEncoderV2"
+          ]
+        },
+        "id": 2,
+        "name": "PragmaDirective",
+        "src": "27:33:0"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "documentation": null,
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            31
+          ],
+          "name": "AndromedaElections",
+          "scope": 32
+        },
+        "children": [
+          {
+            "attributes": {
+              "anonymous": false,
+              "documentation": null,
+              "name": "VoteEvent"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": true,
+                      "name": "votingAccountIndexer",
+                      "scope": 12,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 3,
+                        "name": "ElementaryTypeName",
+                        "src": "120:7:0"
+                      }
+                    ],
+                    "id": 4,
+                    "name": "VariableDeclaration",
+                    "src": "120:36:0"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": true,
+                      "name": "myDateIndexer",
+                      "scope": 12,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint32",
+                          "type": "uint32"
+                        },
+                        "id": 5,
+                        "name": "ElementaryTypeName",
+                        "src": "158:6:0"
+                      }
+                    ],
+                    "id": 6,
+                    "name": "VariableDeclaration",
+                    "src": "158:28:0"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "votedAccount",
+                      "scope": 12,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 7,
+                        "name": "ElementaryTypeName",
+                        "src": "188:7:0"
+                      }
+                    ],
+                    "id": 8,
+                    "name": "VariableDeclaration",
+                    "src": "188:20:0"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "myVote",
+                      "scope": 12,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "string",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "string",
+                          "type": "string"
+                        },
+                        "id": 9,
+                        "name": "ElementaryTypeName",
+                        "src": "210:6:0"
+                      }
+                    ],
+                    "id": 10,
+                    "name": "VariableDeclaration",
+                    "src": "210:13:0"
+                  }
+                ],
+                "id": 11,
+                "name": "ParameterList",
+                "src": "119:105:0"
+              }
+            ],
+            "id": 12,
+            "name": "EventDefinition",
+            "src": "104:121:0"
+          },
+          {
+            "attributes": {
+              "documentation": "Per ogni account ho una struttura contenente due array \"collegati\" tra loro\nper lo stesso indice i, ho l'account votato e il voto effettuato da msg.sender",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "voteCommitted",
+              "scope": 31,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "votedAccount",
+                      "scope": 30,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 13,
+                        "name": "ElementaryTypeName",
+                        "src": "449:7:0"
+                      }
+                    ],
+                    "id": 14,
+                    "name": "VariableDeclaration",
+                    "src": "449:20:0"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "myVote",
+                      "scope": 30,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "string",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "string",
+                          "type": "string"
+                        },
+                        "id": 15,
+                        "name": "ElementaryTypeName",
+                        "src": "471:6:0"
+                      }
+                    ],
+                    "id": 16,
+                    "name": "VariableDeclaration",
+                    "src": "471:20:0"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "myDate",
+                      "scope": 30,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint32",
+                          "type": "uint32"
+                        },
+                        "id": 17,
+                        "name": "ElementaryTypeName",
+                        "src": "493:6:0"
+                      }
+                    ],
+                    "id": 18,
+                    "name": "VariableDeclaration",
+                    "src": "493:13:0"
+                  }
+                ],
+                "id": 19,
+                "name": "ParameterList",
+                "src": "448:59:0"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 20,
+                "name": "ParameterList",
+                "src": "514:0:0"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_address_payable",
+                                  "typeString": "address payable"
+                                },
+                                {
+                                  "typeIdentifier": "t_uint32",
+                                  "typeString": "uint32"
+                                },
+                                {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                },
+                                {
+                                  "typeIdentifier": "t_string_memory_ptr",
+                                  "typeString": "string memory"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 12,
+                              "type": "function (address,uint32,address,string memory)",
+                              "value": "VoteEvent"
+                            },
+                            "id": 21,
+                            "name": "Identifier",
+                            "src": "530:9:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "sender",
+                              "referencedDeclaration": null,
+                              "type": "address payable"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 46,
+                                  "type": "msg",
+                                  "value": "msg"
+                                },
+                                "id": 22,
+                                "name": "Identifier",
+                                "src": "540:3:0"
+                              }
+                            ],
+                            "id": 23,
+                            "name": "MemberAccess",
+                            "src": "540:10:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 18,
+                              "type": "uint32",
+                              "value": "myDate"
+                            },
+                            "id": 24,
+                            "name": "Identifier",
+                            "src": "552:6:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 14,
+                              "type": "address",
+                              "value": "votedAccount"
+                            },
+                            "id": 25,
+                            "name": "Identifier",
+                            "src": "560:12:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 16,
+                              "type": "string memory",
+                              "value": "myVote"
+                            },
+                            "id": 26,
+                            "name": "Identifier",
+                            "src": "574:6:0"
+                          }
+                        ],
+                        "id": 27,
+                        "name": "FunctionCall",
+                        "src": "530:51:0"
+                      }
+                    ],
+                    "id": 28,
+                    "name": "EmitStatement",
+                    "src": "525:56:0"
+                  }
+                ],
+                "id": 29,
+                "name": "Block",
+                "src": "514:75:0"
+              }
+            ],
+            "id": 30,
+            "name": "FunctionDefinition",
+            "src": "426:163:0"
+          }
+        ],
+        "id": 31,
+        "name": "ContractDefinition",
+        "src": "64:536:0"
+      }
+    ],
+    "id": 32,
+    "name": "SourceUnit",
+    "src": "0:600:0"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
+  },
+  "networks": {
+    "1558": {
+      "events": {},
+      "links": {},
+      "address": "0xfff54fc49aA34435AEb0510BFA6e39A4de2043aF",
+      "transactionHash": "0xf0edd12a469b06ca412756bb3720b298bdc22b289f52ac31f3f59e6bbabb63c4"
+    }
+  },
+  "schemaVersion": "3.4.0",
+  "updatedAt": "2021-09-21T12:11:39.349Z",
+  "networkType": "ethereum",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {
+      "voteCommitted(address,string,uint32)": {
+        "notice": "Per ogni account ho una struttura contenente due array \"collegati\" tra loro per lo stesso indice i, ho l'account votato e il voto effettuato da msg.sender"
+      }
+    }
+  }
+}
